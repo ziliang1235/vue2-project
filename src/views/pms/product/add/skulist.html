@@ -1,0 +1,31 @@
+<script>
+        let attrList = [
+                {name:'颜色'},
+                {name:'尺寸'}
+        ]
+        let form = {
+                '颜色':['金色','黑色'],
+                '尺寸':[30,31,32]
+        }
+        let list = []
+        let option = []
+
+        attrList.forEach(item=>{       //item.name --颜色、尺寸
+                form[item.name].forEach(item2=>{   //item2  --金色  黑色
+                        if(list.length == 0){
+                                let li = {[item.name]:item2}
+                                option.push(li)
+                        }else{
+                                list.forEach(item3=>{   //item3  --{颜色：金色} {颜色：黑色}
+                                        let i = JSON.parse(JSON.stringify(item3))
+                                        i[item.name] = item2
+                                        option.push(i)
+                                })
+                        }
+                })
+                list = option
+                option = []
+        })
+        console.log(list);
+
+</script>
